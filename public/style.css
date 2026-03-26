@@ -1,0 +1,370 @@
+/* ========================================
+   Neo Brutalism Design System
+   ======================================== */
+
+:root {
+  --primary: #000000;
+  --secondary: #f5f5f5;
+  --accent: #ff6b6b;
+  --border-width: 3px;
+  --spacing-base: 24px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+  background-color: #ffffff;
+  color: var(--primary);
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: var(--spacing-base);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ========================================
+   Header
+   ======================================== */
+
+header {
+  text-align: center;
+  margin-bottom: 48px;
+  padding-bottom: var(--spacing-base);
+  border-bottom: var(--border-width) solid var(--primary);
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 900;
+  letter-spacing: -1px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #666;
+  font-weight: 500;
+}
+
+/* ========================================
+   Main Content
+   ======================================== */
+
+main {
+  flex: 1;
+}
+
+/* ========================================
+   Form Section
+   ======================================== */
+
+.form-section {
+  margin-bottom: 40px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 8px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 16px;
+  font-size: 1rem;
+  border: var(--border-width) solid var(--primary);
+  background-color: #ffffff;
+  color: var(--primary);
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  background-color: var(--secondary);
+  box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.15);
+}
+
+input[type="text"]::placeholder {
+  color: #999;
+}
+
+/* ========================================
+   Button
+   ======================================== */
+
+.btn-submit {
+  width: 100%;
+  padding: 18px;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background-color: var(--primary);
+  color: #ffffff;
+  border: var(--border-width) solid var(--primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+}
+
+.btn-submit:hover:not(:disabled) {
+  background-color: #ffffff;
+  color: var(--primary);
+  box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.2);
+  transform: translate(-2px, -2px);
+}
+
+.btn-submit:active:not(:disabled) {
+  transform: translate(0, 0);
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.15);
+}
+
+.btn-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.btn-text {
+  display: inline;
+}
+
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+.spinner.hidden {
+  display: none;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ========================================
+   Alerts
+   ======================================== */
+
+.alert {
+  padding: 20px;
+  margin-bottom: 30px;
+  border: var(--border-width) solid;
+  background-color: #fafafa;
+}
+
+.alert-error {
+  border-color: var(--accent);
+  background-color: #fff5f5;
+  color: var(--accent);
+}
+
+.alert strong {
+  font-weight: 700;
+}
+
+/* ========================================
+   Joke Section
+   ======================================== */
+
+.joke-section {
+  animation: slideInUp 0.4s ease;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.joke-card {
+  padding: 32px;
+  border: var(--border-width) solid var(--primary);
+  background-color: var(--secondary);
+  box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.greeting {
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.joke-content {
+  padding: 24px 0;
+  border-top: 2px dashed var(--primary);
+  border-bottom: 2px dashed var(--primary);
+  margin: 20px 0;
+}
+
+.joke-text {
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1.8;
+  color: var(--primary);
+}
+
+.joke-category {
+  margin-top: 16px;
+  font-size: 0.9rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 6px 12px;
+  background-color: var(--primary);
+  color: #ffffff;
+  font-weight: 700;
+  border: var(--border-width) solid var(--primary);
+}
+
+.hint {
+  text-align: center;
+  color: #999;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+/* ========================================
+   Welcome Message
+   ======================================== */
+
+.welcome-message {
+  text-align: center;
+  padding: 40px 24px;
+  background-color: var(--secondary);
+  border: var(--border-width) dashed var(--primary);
+  border-radius: 0;
+}
+
+.welcome-message p {
+  font-size: 1.1rem;
+  color: #666;
+  font-weight: 500;
+}
+
+/* ========================================
+   Footer
+   ======================================== */
+
+footer {
+  text-align: center;
+  padding-top: var(--spacing-base);
+  margin-top: 48px;
+  border-top: var(--border-width) solid var(--primary);
+  font-size: 0.9rem;
+  color: #666;
+}
+
+footer a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 2px solid var(--accent);
+  transition: all 0.2s ease;
+}
+
+footer a:hover {
+  background-color: var(--accent);
+  color: #ffffff;
+  padding: 0 4px;
+}
+
+/* ========================================
+   Responsive Design
+   ======================================== */
+
+@media (max-width: 640px) {
+  .container {
+    padding: 16px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  header {
+    margin-bottom: 32px;
+  }
+
+  .joke-card {
+    padding: 24px;
+  }
+
+  .joke-text {
+    font-size: 1.1rem;
+  }
+
+  .btn-submit {
+    padding: 16px;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+  }
+
+  .form-group {
+    margin-bottom: 16px;
+  }
+
+  input[type="text"],
+  .btn-submit {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+
+  .joke-card {
+    padding: 20px;
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.1);
+  }
+}

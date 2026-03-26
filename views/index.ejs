@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personalized Joke Generator</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎭 Personalized Joke Generator</h1>
+            <p class="subtitle">Get a custom joke based on your name!</p>
+        </header>
+
+        <main>
+            <section class="form-section">
+                <form id="jokeForm" method="POST" action="/api/joke">
+                    <div class="form-group">
+                        <label for="name">What's your name?</label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Enter your name"
+                            maxlength="50"
+                            value="<%= userName %>"
+                            required
+                            autofocus
+                        >
+                    </div>
+                    <button type="submit" class="btn-submit" id="submitBtn">
+                        <span class="btn-text">Get My Joke</span>
+                        <span class="spinner hidden" id="spinner"></span>
+                    </button>
+                </form>
+            </section>
+
+            <% if (error) { %>
+                <div class="alert alert-error">
+                    <strong>⚠️ Oops!</strong> <%= error %>
+                </div>
+            <% } %>
+
+            <% if (joke) { %>
+                <section class="joke-section">
+                    <div class="joke-card">
+                        <p class="greeting">Hey <strong><%= userName %></strong>, here's your joke:</p>
+                        <div class="joke-content">
+                            <p class="joke-text"><%= joke %></p>
+                        </div>
+                        <% if (jokeCategory) { %>
+                            <p class="joke-category">Category: <span class="badge"><%= jokeCategory %></span></p>
+                        <% } %>
+                    </div>
+                    <p class="hint">Try entering a different name to get another joke!</p>
+                </section>
+            <% } %>
+
+            <% if (!joke && !error) { %>
+                <div class="welcome-message">
+                    <p>👋 Enter your name above and click "Get My Joke" to receive a personalized joke!</p>
+                </div>
+            <% } %>
+        </main>
+
+        <footer>
+            <p>Powered by <a href="https://sv443.net/jokeapi/v2/" target="_blank">JokeAPI</a> • Built with Express.js & Axios</p>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('jokeForm').addEventListener('submit', function(e) {
+            const submitBtn = document.getElementById('submitBtn');
+            const spinner = document.getElementById('spinner');
+            const btnText = document.querySelector('.btn-text');
+
+            submitBtn.disabled = true;
+            spinner.classList.remove('hidden');
+            btnText.textContent = 'Loading...';
+        });
+    </script>
+</body>
+</html>
